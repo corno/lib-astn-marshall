@@ -4,12 +4,12 @@ import * as pc from "pareto-core-candidates"
 import { ITypedValueHandler, PropertyDefinition } from "astn-typedhandlers-api"
 import { Datastore, Dictionary, TaggedUnion, Group, Value } from "../interface"
 
-export function createBuilder<Annotation>(
+export function createBuilder<PAnnotation>(
     ds: Datastore,
-): ITypedValueHandler<Annotation> {
+): ITypedValueHandler<PAnnotation> {
     function buildValue(
         value: Value,
-    ): ITypedValueHandler<Annotation> {
+    ): ITypedValueHandler<PAnnotation> {
         return {
             onDictionary: () => {
                 const dictBuilder = pc.createDictionaryBuilder<Value>()

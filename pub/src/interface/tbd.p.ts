@@ -5,9 +5,9 @@ import { IMarshallableDataset } from "./interfaces/IMarshallableDataset"
 import { Datastore } from "./types/Datastore"
 import { SerializationStyle } from "./types/SerializationStyle"
 
-export type CreateDatastoreBuilder = <Annotation>(
+export type CreateDatastoreBuilder = <PAnnotation>(
     ds: Datastore,
-) => th.ITypedValueHandler<Annotation>
+) => th.ITypedValueHandler<PAnnotation>
 
 export type CreateMarshallableDataset = (
     ds: Datastore

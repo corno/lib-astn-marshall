@@ -1,11 +1,11 @@
 // import { IAnnotatedHandler, IFormatInstructionWriter } from "astn-serializer-api";
 
-// export type CreateASTNNormalizer<Annotation> = (
+// export type CreateASTNNormalizer<PAnnotation> = (
 //     $: {
 //         indentationString: string
 //         newline: string
 //     },
 //     $p: {
-//         writer: IFormatInstructionWriter<Annotation>
+//         writer: IFormatInstructionWriter<PAnnotation>
 //     },
-// ) => IAnnotatedHandler<Annotation>
+// ) => IAnnotatedHandler<PAnnotation>

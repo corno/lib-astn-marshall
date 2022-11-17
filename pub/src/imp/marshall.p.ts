@@ -157,17 +157,17 @@ export function marshall(
                     out.sendBlock(
                         {
                             open: ["structural", {
-                                "type": ["open dictionary", {}],
+                                "type": ["open dictionary", null],
                             }],
                             close: ["structural", {
-                                "type": ["close dictionary", {}],
+                                "type": ["close dictionary", null],
                             }],
                         },
                         (out) => {
                             dict.entries.forEach((entry, key) => {
                                 out.sendEvent(["simple string", {
                                     value: key,
-                                    wrapping: ["quote", {}],
+                                    wrapping: ["quote", null],
                                 }])
                                 marshallValue(
                                     entry,
@@ -188,11 +188,11 @@ export function marshall(
                     out.sendBlock(
                         {
                             open: ["structural", {
-                                "type": ["open shorthand group", {}],
+                                "type": ["open shorthand group", null],
                             }],
                             close:
                                 ["structural", {
-                                    "type": ["close shorthand group", {}],
+                                    "type": ["close shorthand group", null],
                                 }],
                         },
                         (out) => {
@@ -226,13 +226,13 @@ export function marshall(
                 value.toTaggedUnion((taggedUnion) => {
                     if (!inMixinMode) {
                         out.sendEvent(["structural", {
-                            "type": ["tagged union start", {}],
+                            "type": ["tagged union start", null],
                         }])
                     }
                     if (taggedUnion.option !== null) {
                         out.sendEvent(["simple string", {
                             value: taggedUnion.option,
-                            wrapping: ["apostrophe", {}],
+                            wrapping: ["apostrophe", null],
                         }])
                         marshallValue(
                             taggedUnion.value,
@@ -251,8 +251,8 @@ export function marshall(
                     out.sendEvent(["simple string", {
                         value: str,
                         wrapping: $.quoted
-                            ? ["quote", {}]
-                            : ["none", {}],
+                            ? ["quote", null]
+                            : ["none", null],
                     }])
                 })
                 break
@@ -288,10 +288,10 @@ export function marshall(
                                 out.sendBlock(
                                     {
                                         open: ["structural", {
-                                            "type": ["open verbose group", {}],
+                                            "type": ["open verbose group", null],
                                         }],
                                         close: ["structural", {
-                                            "type": ["close verbose group", {}],
+                                            "type": ["close verbose group", null],
                                         }],
                                     },
                                     (out) => {
@@ -300,7 +300,7 @@ export function marshall(
                                                 function serializeProperty() {
                                                     out.sendEvent(["simple string", {
                                                         value: key,
-                                                        wrapping: ["apostrophe", {}],
+                                                        wrapping: ["apostrophe", null],
                                                     }])
                                                     marshallValue(
                                                         prop,
@@ -333,10 +333,10 @@ export function marshall(
                                 out.sendBlock(
                                     {
                                         open: ["structural", {
-                                            "type": ["open shorthand group", {}],
+                                            "type": ["open shorthand group", null],
                                         }],
                                         close: ["structural", {
-                                            "type": ["close shorthand group", {}],
+                                            "type": ["close shorthand group", null],
                                         }],
                                     },
                                     (out) => {
@@ -381,10 +381,10 @@ export function marshall(
         },
     }
 
-    function handleEvent<Annotation>(
+    function handleEvent<PAnnotation>(
         event: tc.Token,
         annotation: Annotation,
-        parser: tc.ITokenConsumer<Annotation>,
+        parser: tc.ITokenConsumer<PAnnotation>,
     ): void {
         parser.onToken({
             annotation: annotation,
