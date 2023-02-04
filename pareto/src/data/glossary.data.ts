@@ -20,7 +20,7 @@ export const $: mglossary.TGlossary = {
     'parameters': d({}),
     'templates': d({}),
     'types': types({
-        "MarschallableValue": group({
+        "MarshallableValue": group({
             "dictionary": member(computed(dictionary(reference("MarshallableValue")))),
             "group": member(computed(array(group({
                 "key": member(string()),
