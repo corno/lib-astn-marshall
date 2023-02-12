@@ -1,66 +1,122 @@
 import * as pt from 'pareto-core-types'
 
 
-export namespace GMarshallableValue {
+export namespace T {
     
-    export namespace Pdictionary {
+    export namespace MarshallableValue {
         
-        export namespace C {}
-        export type C = pt.Dictionary<UMarshallableValue>
-    }
-    export type Pdictionary = () => Pdictionary.C
-    
-    export namespace Pgroup {
-        
-        export namespace C {
+        export namespace dictionary {
             
-            export namespace A {}
-            export type A = {
+            export namespace C {
+                
+                export type D = T.MarshallableValue
+            }
+            
+            export type C = pt.Dictionary<T.MarshallableValue>
+        }
+        
+        export type dictionary = () => pt.Dictionary<T.MarshallableValue>
+        
+        export namespace group {
+            
+            export namespace C {
+                
+                export namespace A {
+                    
+                    export type key = string
+                    
+                    export type value = T.MarshallableValue
+                }
+                
+                export type A = {
+                    readonly 'key': string
+                    readonly 'value': T.MarshallableValue
+                }
+            }
+            
+            export type C = pt.Array<{
                 readonly 'key': string
-                readonly 'value': UMarshallableValue
-            }
+                readonly 'value': T.MarshallableValue
+            }>
         }
-        export type C = pt.Array<C.A>
-    }
-    export type Pgroup = () => Pgroup.C
-    
-    export namespace Plist {
         
-        export namespace C {}
-        export type C = pt.Array<UMarshallableValue>
-    }
-    export type Plist = () => Plist.C
-    
-    export namespace PmultilineString {
+        export type group = () => pt.Array<{
+            readonly 'key': string
+            readonly 'value': T.MarshallableValue
+        }>
         
-        export namespace C {}
-        export type C = pt.Array<string>
-    }
-    export type PmultilineString = () => PmultilineString.C
-    
-    export namespace PsimpleString {}
-    export type PsimpleString = () => string
-    
-    export namespace PtaggedUnion {
-        
-        export namespace C {
+        export namespace list {
             
-            export namespace A {}
-            export type A = {
-                readonly 'option': string
-                readonly 'value': UMarshallableValue
+            export namespace C {
+                
+                export type A = T.MarshallableValue
             }
+            
+            export type C = pt.Array<T.MarshallableValue>
         }
-        export type C = pt.Array<C.A>
+        
+        export type list = () => pt.Array<T.MarshallableValue>
+        
+        export namespace multilineString {
+            
+            export namespace C {
+                
+                export type A = string
+            }
+            
+            export type C = pt.Array<string>
+        }
+        
+        export type multilineString = () => pt.Array<string>
+        
+        export namespace simpleString {
+            
+            export type C = string
+        }
+        
+        export type simpleString = () => string
+        
+        export namespace taggedUnion {
+            
+            export namespace C {
+                
+                export namespace A {
+                    
+                    export type option = string
+                    
+                    export type value = T.MarshallableValue
+                }
+                
+                export type A = {
+                    readonly 'option': string
+                    readonly 'value': T.MarshallableValue
+                }
+            }
+            
+            export type C = pt.Array<{
+                readonly 'option': string
+                readonly 'value': T.MarshallableValue
+            }>
+        }
+        
+        export type taggedUnion = () => pt.Array<{
+            readonly 'option': string
+            readonly 'value': T.MarshallableValue
+        }>
     }
-    export type PtaggedUnion = () => PtaggedUnion.C
+    
+    export type MarshallableValue = {
+        readonly 'dictionary': () => pt.Dictionary<T.MarshallableValue>
+        readonly 'group': () => pt.Array<{
+            readonly 'key': string
+            readonly 'value': T.MarshallableValue
+        }>
+        readonly 'list': () => pt.Array<T.MarshallableValue>
+        readonly 'multilineString': () => pt.Array<string>
+        readonly 'simpleString': () => string
+        readonly 'taggedUnion': () => pt.Array<{
+            readonly 'option': string
+            readonly 'value': T.MarshallableValue
+        }>
+    }
 }
-export type GMarshallableValue = {
-    readonly 'dictionary': GMarshallableValue.Pdictionary
-    readonly 'group': GMarshallableValue.Pgroup
-    readonly 'list': GMarshallableValue.Plist
-    readonly 'multilineString': GMarshallableValue.PmultilineString
-    readonly 'simpleString': GMarshallableValue.PsimpleString
-    readonly 'taggedUnion': GMarshallableValue.PtaggedUnion
-}
-export type UMarshallableValue = GMarshallableValue

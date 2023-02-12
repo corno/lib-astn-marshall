@@ -6,7 +6,7 @@ const d = pr.wrapRawDictionary
 
 import { $ as api } from "./api.data"
 
-export const $: mproject.TProject = {
+export const $: mproject.T.Project = {
     'author': "Corno",
     'description': "transform a *typed* dataset into a string representation, i.e. an ASTN document",
     'license': "ISC",

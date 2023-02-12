@@ -7,20 +7,19 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, computed
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, computed, type
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pr.wrapRawDictionary
 
-export const $: mglossary.TGlossary = {
+export const $: mglossary.T.Glossary<string> = {
     'imports': d({
     }),
     'parameters': d({}),
-    'templates': d({}),
-    'types': types({
-        "MarshallableValue": group({
+    'types': d({
+        "MarshallableValue": type( group({
             "dictionary": member(computed(dictionary(reference("MarshallableValue")))),
             "group": member(computed(array(group({
                 "key": member(string()),
@@ -33,7 +32,7 @@ export const $: mglossary.TGlossary = {
             })))),
             "simpleString": member(computed(string())),
             "multilineString": member(computed(array(string()))),
-        }),
+        })),
     }),
     'interfaces': d({
     }),
