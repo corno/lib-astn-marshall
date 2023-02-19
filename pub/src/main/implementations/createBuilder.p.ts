@@ -12,7 +12,7 @@ import * as pt from 'pareto-core-types'
 //     ): ITypedValueHandler<PAnnotation> {
 //         return {
 //             onDictionary: () => {
-//                 const dictBuilder = pc.createDictionaryBuilder<Value>()
+//                 const dictBuilder = pc.createDictionaryBuilderFIXME<Value>()
 //                 return {
 //                     onClose: () => {
 //                         value.type = ["dictionary", dictBuilder.toDictionary()]
@@ -27,7 +27,7 @@ import * as pt from 'pareto-core-types'
 //                 }
 //             },
 //             onList: () => {
-//                 const listBuilder = pc.createArrayBuilder<Value>()
+//                 const listBuilder = pc.createArrayBuilderFIXME<Value>()
 //                 return {
 //                     onClose: () => { 
 //                         value.type = ["list", listBuilder.toArray()]
@@ -76,7 +76,7 @@ import * as pt from 'pareto-core-types'
 //                 )
 //             },
 //             onGroup: () => {
-//                 const groupBuilder = pc.createDictionaryBuilder<Value>()
+//                 const groupBuilder = pc.createDictionaryBuilderFIXME<Value>()
 //                 return {
 //                     onUnexpectedProperty: () => { },
 //                     onProperty: ($) => {
