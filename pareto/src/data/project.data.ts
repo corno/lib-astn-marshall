@@ -9,13 +9,14 @@ import { $ as api } from "./api.data"
 export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "transform a *typed* dataset into a string representation, i.e. an ASTN document",
-    'license': "ISC",
+    'license': "TBD",
 
     'dependencies': d({
     }),
     'type': ['library', {
         'main': {
             'definition': api,
+            'implementation': ['manual', {}],
         },
         'submodules': d({
         }),
