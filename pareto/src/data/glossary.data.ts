@@ -1,40 +1,41 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    null_,
-    array,
-    string,
-    reference,
-    boolean,
-    typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, computed, type
+    array, computed, dictionary, group, member, ref, string, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: mglossary.T.Glossary<string> = {
+export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
-    'types': d({
-        "MarshallableValue": type( group({
-            "dictionary": member(computed(dictionary(reference("MarshallableValue")))),
-            "group": member(computed(array(group({
-                "key": member(string()),
-                "value": member(reference("MarshallableValue")),
-            })))),
-            "list": member(computed(array(reference("MarshallableValue")))),
-            "taggedUnion": member(computed(array(group({
-                "option": member(string()),
-                "value": member(reference("MarshallableValue")),
-            })))),
-            "simpleString": member(computed(string())),
-            "multilineString": member(computed(array(string()))),
-        })),
-    }),
-    'builders': d({}),
-    'interfaces': d({
-    }),
-    'functions': d({
-    }),
+    'imports': d({}),
+    'root': {
+        'namespaces': d({}),
+        'types': d({
+            "MarshallableValue": type(group({
+                "dictionary": member(computed(dictionary(ref(typeReference("MarshallableValue"))))),
+                "group": member(computed(array(group({
+                    "key": member(string()),
+                    "value": member(ref(typeReference("MarshallableValue"))),
+                })))),
+                "list": member(computed(array(ref(typeReference("MarshallableValue"))))),
+                "taggedUnion": member(computed(array(group({
+                    "option": member(string()),
+                    "value": member(ref(typeReference("MarshallableValue"))),
+                })))),
+                "simpleString": member(computed(string())),
+                "multilineString": member(computed(array(string()))),
+            })),
+        }),
+    },
+    'asynchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
 }

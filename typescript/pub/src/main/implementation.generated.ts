@@ -1,3 +1,3 @@
-import { API } from "./definition/api.generated"
+import { API } from "./api.generated"
 
-export const $a: API = {}
+export const $api: API = null
